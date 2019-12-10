@@ -1,0 +1,988 @@
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rake:9
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rake:9
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rake:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rake:9
+Migrating to CreateShops (20191210124052)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rake:9
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "shops" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "shopify_domain" varchar NOT NULL, "shopify_token" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20191210124052_create_shops.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_shops_on_shopify_domain" ON "shops" ("shopify_domain")[0m
+  ↳ db/migrate/20191210124052_create_shops.rb:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191210124052"]]
+  ↳ bin/rake:9
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rake:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rake:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rake:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-12-10 12:53:45.499984"], ["updated_at", "2019-12-10 12:53:45.499984"]]
+  ↳ bin/rake:9
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rake:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rake:9
+Started GET "/" for ::1 at 2019-12-10 14:53:50 +0200
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#index as HTML
+Redirected to http://localhost:3000/login
+Completed 302 Found in 51ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-12-10 14:53:50 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb (3.7ms)
+Completed 200 OK in 14ms (Views: 11.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-12-10 14:55:44 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IgUBmhnquHrLRshgxT4agYooVoyACPmFLKxiZ5Y3K1QnOQ+UrTuMhtXMxBetIFMWaVD9mZaGvqzxCs05UN44Ow==", "shop"=>"shopnixtest.myshopify.com"}
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_layout_styles.html.erb (1.0ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_typography_styles.html.erb (0.9ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_card_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_button_styles.html.erb (0.4ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb (299.3ms)
+Completed 200 OK in 303ms (Views: 301.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login?return_to=%2F%3F&shop=shopnixtest.myshopify.com&top_level=true" for ::1 at 2019-12-10 14:55:44 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Parameters: {"return_to"=>"/?", "shop"=>"shopnixtest.myshopify.com", "top_level"=>"true"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 4ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 14:55:44 +0200
+Started POST "/login" for ::1 at 2019-12-10 14:56:16 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IgUBmhnquHrLRshgxT4agYooVoyACPmFLKxiZ5Y3K1QnOQ+UrTuMhtXMxBetIFMWaVD9mZaGvqzxCs05UN44Ow==", "shop"=>"shopnixtest.myshopify.com"}
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_layout_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_typography_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_card_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_button_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb (8.5ms)
+Completed 200 OK in 11ms (Views: 9.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login?return_to=%2F%3F&shop=shopnixtest.myshopify.com&top_level=true" for ::1 at 2019-12-10 14:56:17 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Parameters: {"return_to"=>"/?", "shop"=>"shopnixtest.myshopify.com", "top_level"=>"true"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 14:56:17 +0200
+Started GET "/login" for ::1 at 2019-12-10 14:56:19 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb (0.8ms)
+Completed 200 OK in 8ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-12-10 14:56:44 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sykgUz3D7iq48etT+JhXG1EeQRr8QQt70EqzE0rPvqS2FS5diRLa1qZ75ySQhh6MsmbqD+rPTFIN7BxNjCatyw==", "shop"=>"https://dealership1111.myshopify.com/admin"}
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_layout_styles.html.erb (0.5ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_typography_styles.html.erb (0.4ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_card_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_button_styles.html.erb (0.4ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb (16.2ms)
+Completed 200 OK in 20ms (Views: 18.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login?return_to=%2F%3F&shop=dealership1111.myshopify.com&top_level=true" for ::1 at 2019-12-10 14:56:44 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Parameters: {"return_to"=>"/?", "shop"=>"dealership1111.myshopify.com", "top_level"=>"true"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 14:56:44 +0200
+Started GET "/login" for ::1 at 2019-12-10 14:56:47 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb (1.2ms)
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-12-10 14:56:49 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"r+o8eD2qBtlSFSn1DUp+O6FUjhoEa6jgsTBT0AZn67Gq1jJ2iXsyJUyfJYJlVDesQiwlDxLl78lslvyOwI743g==", "shop"=>"https://dealership1111.myshopify.com/"}
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_layout_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_typography_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_card_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_button_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb (7.4ms)
+Completed 200 OK in 10ms (Views: 8.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login?return_to=%2F%3F&shop=dealership1111.myshopify.com&top_level=true" for ::1 at 2019-12-10 14:56:49 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Parameters: {"return_to"=>"/?", "shop"=>"dealership1111.myshopify.com", "top_level"=>"true"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 14:56:49 +0200
+Started GET "/login" for ::1 at 2019-12-10 14:56:52 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb (0.8ms)
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-12-10 14:57:00 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"L/BH9gRadbk/LZeIxLJAKvkncSLg6StxWiR7sZDwlVgqzEn4sItBRSGnm/+srAm9Gl/aN/ZnbFiHgtTvVhmGNw==", "shop"=>"dealership1111.myshopify.com"}
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_layout_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_typography_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_card_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_button_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb (7.8ms)
+Completed 200 OK in 10ms (Views: 8.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login?return_to=%2F%3F&shop=dealership1111.myshopify.com&top_level=true" for ::1 at 2019-12-10 14:57:00 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Parameters: {"return_to"=>"/?", "shop"=>"dealership1111.myshopify.com", "top_level"=>"true"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 14:57:00 +0200
+Started GET "/login" for ::1 at 2019-12-10 14:59:43 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb (0.9ms)
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-12-10 14:59:49 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"E65E1pl6ostoiC1MvtP71C7n9LzVfS3CQH5z5HNYk+kWkkrYLauWN3YCITvWzbJDzZ9fqcPzauud2Ny6tbGAhg==", "shop"=>"dealership1111.myshopify.com"}
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_layout_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_typography_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_card_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_button_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb (53.8ms)
+Completed 200 OK in 56ms (Views: 55.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login?return_to=%2F%3F&shop=dealership1111.myshopify.com&top_level=true" for ::1 at 2019-12-10 14:59:49 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Parameters: {"return_to"=>"/?", "shop"=>"dealership1111.myshopify.com", "top_level"=>"true"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 14:59:49 +0200
+Started GET "/login" for ::1 at 2019-12-10 14:59:54 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb (1.0ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+
+
+  [1m[35m (498.0ms)[0m  [1m[35mCREATE DATABASE "coffee-shop_development" ENCODING = 'unicode'[0m
+  ↳ bin/rake:9
+  [1m[35m (372.4ms)[0m  [1m[35mCREATE DATABASE "coffee-shop_test" ENCODING = 'unicode'[0m
+  ↳ bin/rake:9
+  [1m[35m (23.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rake:9
+  [1m[35m (21.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rake:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6137174086200703875)[0m
+  ↳ bin/rake:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rake:9
+Migrating to CreateShops (20191210124052)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rake:9
+  [1m[35m (16.6ms)[0m  [1m[35mCREATE TABLE "shops" ("id" bigserial primary key, "shopify_domain" character varying NOT NULL, "shopify_token" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20191210124052_create_shops.rb:3
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_shops_on_shopify_domain" ON "shops"  ("shopify_domain")[0m
+  ↳ db/migrate/20191210124052_create_shops.rb:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191210124052"]]
+  ↳ bin/rake:9
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rake:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rake:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rake:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-12-10 13:06:47.336933"], ["updated_at", "2019-12-10 13:06:47.336933"]]
+  ↳ bin/rake:9
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rake:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6137174086200703875)[0m
+  ↳ bin/rake:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rake:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6137174086200703875)[0m
+  ↳ bin/rake:9
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rake:9
+  [1m[36mActiveRecord::InternalMetadata Load (12.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rake:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rake:9
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rake:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6137174086200703875)[0m
+  ↳ bin/rake:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rake:9
+Started GET "/" for ::1 at 2019-12-10 16:13:51 +0200
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#index as HTML
+Redirected to http://localhost:3000/login
+Completed 302 Found in 35ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-12-10 16:13:52 +0200
+Processing by HomeController#index as HTML
+Redirected to http://localhost:3000/login
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-12-10 16:13:52 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb (2.5ms)
+Completed 200 OK in 10ms (Views: 7.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-12-10 16:14:22 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5xGTE0TvIKJ1a6Gv9v4tJtwi4K6sciN2jAOtSJOMPcviLZ0d8D4UXmvhrdie4GSxP1pLu7r8ZF9RpQIWVWUupA==", "shop"=>"nixshoptest.myshopify.com"}
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_layout_styles.html.erb (0.4ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_typography_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_card_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_button_styles.html.erb (0.4ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb (254.6ms)
+Completed 200 OK in 258ms (Views: 256.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login?return_to=%2F%3F&shop=nixshoptest.myshopify.com&top_level=true" for ::1 at 2019-12-10 16:14:22 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Parameters: {"return_to"=>"/?", "shop"=>"nixshoptest.myshopify.com", "top_level"=>"true"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 16:14:22 +0200
+Started GET "/login" for ::1 at 2019-12-10 16:14:27 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb (1.0ms)
+Completed 200 OK in 9ms (Views: 2.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-12-10 16:14:39 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Nb8MjZb9uSr3lWFM/Kpa8i1xn3o288hXLW6ZMRr+/tswgwKDIiyN1ukfbTuUtBNlzgk0byB9j37wyDZv3BfttA==", "shop"=>"shopnixtest.myshopify.com"}
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_layout_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_typography_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_card_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_button_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb (8.0ms)
+Completed 200 OK in 10ms (Views: 8.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login?return_to=%2F%3F&shop=shopnixtest.myshopify.com&top_level=true" for ::1 at 2019-12-10 16:14:39 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Parameters: {"return_to"=>"/?", "shop"=>"shopnixtest.myshopify.com", "top_level"=>"true"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 16:14:39 +0200
+Started GET "/login" for ::1 at 2019-12-10 16:14:42 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb (0.9ms)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-12-10 16:15:23 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VxXndyWp3ghgwMnn+Qgp1i5TYGVHuJOvlq4i4WYgWtNSKel5kXjq9H5KxZCRFmBBzSvLcFE21IZLCI2/oMlJvA==", "shop"=>"nixshoptest.myshopify.com"}
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_layout_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_typography_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_card_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_button_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb (8.1ms)
+Completed 200 OK in 10ms (Views: 9.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login?return_to=%2F%3F&shop=nixshoptest.myshopify.com&top_level=true" for ::1 at 2019-12-10 16:15:23 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Parameters: {"return_to"=>"/?", "shop"=>"nixshoptest.myshopify.com", "top_level"=>"true"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 16:15:23 +0200
+Started GET "/" for 91.208.153.1 at 2019-12-10 16:16:18 +0200
+Cannot render console from 91.208.153.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by HomeController#index as HTML
+Redirected to https://36625fe0.ngrok.io/login
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 91.208.153.1 at 2019-12-10 16:16:19 +0200
+Cannot render console from 91.208.153.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ShopifyApp::SessionsController#new as HTML
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb (1.3ms)
+Completed 200 OK in 10ms (Views: 3.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 91.208.153.1 at 2019-12-10 16:16:51 +0200
+Cannot render console from 91.208.153.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"id1ib1OzbjHeabgx0yXUfPdrAi0eUnigz2Pj5FvKEb/q4YJSDikk3863OaC9Jq6r3rtKGxBdYy4iW6cUmlIGbQ==", "shop"=>"nixshoptest.myshopify.com"}
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_layout_styles.html.erb (0.4ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_typography_styles.html.erb (0.4ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_card_styles.html.erb (0.4ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_button_styles.html.erb (0.4ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb (17.8ms)
+Completed 200 OK in 26ms (Views: 24.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login?return_to=%2F%3F&shop=nixshoptest.myshopify.com&top_level=true" for 91.208.153.1 at 2019-12-10 16:16:52 +0200
+Cannot render console from 91.208.153.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ShopifyApp::SessionsController#new as HTML
+  Parameters: {"return_to"=>"/?", "shop"=>"nixshoptest.myshopify.com", "top_level"=>"true"}
+Redirected to https://36625fe0.ngrok.io/auth/shopify
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for 91.208.153.1 at 2019-12-10 16:16:52 +0200
+Cannot render console from 91.208.153.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/login" for 91.208.153.1 at 2019-12-10 16:20:07 +0200
+Cannot render console from 91.208.153.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ShopifyApp::SessionsController#new as HTML
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb (0.9ms)
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 91.208.153.1 at 2019-12-10 16:20:15 +0200
+Cannot render console from 91.208.153.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"d1rITHSQZ51s7D5UtBKCCbCSSYDH8o1oy4ApqCpLysoUZihxKQotc3wyv8XaEfjemUIBtsn9luYmuG1Y69PdGA==", "shop"=>"nixshoptest.myshopify.com"}
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_layout_styles.html.erb (0.5ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_typography_styles.html.erb (0.5ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_card_styles.html.erb (0.4ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_button_styles.html.erb (0.5ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb (17.6ms)
+Completed 200 OK in 26ms (Views: 24.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login?return_to=%2F%3F&shop=nixshoptest.myshopify.com&top_level=true" for 91.208.153.1 at 2019-12-10 16:20:16 +0200
+Cannot render console from 91.208.153.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ShopifyApp::SessionsController#new as HTML
+  Parameters: {"return_to"=>"/?", "shop"=>"nixshoptest.myshopify.com", "top_level"=>"true"}
+Redirected to https://36625fe0.ngrok.io/auth/shopify
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for 91.208.153.1 at 2019-12-10 16:20:16 +0200
+Cannot render console from 91.208.153.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/" for ::1 at 2019-12-10 16:58:19 +0200
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#index as HTML
+Redirected to http://localhost:3000/login
+Completed 302 Found in 27ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-12-10 16:58:19 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb (2.2ms)
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-12-10 16:58:23 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AA/G4+eZMaDbej6OD9+bPW0UATuxcBMZpcD3FDsti3MFM8jtU0gFXMXwMvlnwdKqjmyqLqf+VDB4ZlhK/cSYHA==", "shop"=>"nixshoptest.myshopify.com"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 16:58:23 +0200
+Started POST "/login" for ::1 at 2019-12-10 16:58:34 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AA/G4+eZMaDbej6OD9+bPW0UATuxcBMZpcD3FDsti3MFM8jtU0gFXMXwMvlnwdKqjmyqLqf+VDB4ZlhK/cSYHA==", "shop"=>"dealership1111.myshopify.com"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 16:58:34 +0200
+Started POST "/login" for ::1 at 2019-12-10 16:58:51 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AA/G4+eZMaDbej6OD9+bPW0UATuxcBMZpcD3FDsti3MFM8jtU0gFXMXwMvlnwdKqjmyqLqf+VDB4ZlhK/cSYHA==", "shop"=>"shopnixtest.myshopify.com"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 16:58:51 +0200
+Started POST "/login" for ::1 at 2019-12-10 16:59:36 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AA/G4+eZMaDbej6OD9+bPW0UATuxcBMZpcD3FDsti3MFM8jtU0gFXMXwMvlnwdKqjmyqLqf+VDB4ZlhK/cSYHA==", "shop"=>"shopxtest.myshopify.com"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 16:59:36 +0200
+Started GET "/" for ::1 at 2019-12-10 16:59:53 +0200
+Processing by HomeController#index as HTML
+Redirected to http://localhost:3000/login
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-12-10 16:59:53 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb (2.0ms)
+Completed 200 OK in 11ms (Views: 4.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-12-10 16:59:58 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0Ar2INS1BSQjS02Lfx+S6/MOBZxFw/Gd+K+vn5iJWqrVNvguYGQx2D3BQfwXAdt8EHauiVNNtrQlCQDBXmBJxQ==", "shop"=>"nixshoptest.myshopify.com"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 16:59:58 +0200
+Started POST "/login" for ::1 at 2019-12-10 17:00:10 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0Ar2INS1BSQjS02Lfx+S6/MOBZxFw/Gd+K+vn5iJWqrVNvguYGQx2D3BQfwXAdt8EHauiVNNtrQlCQDBXmBJxQ==", "shop"=>"shopnixtest.myshopify.com"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 17:00:10 +0200
+Started POST "/login" for ::1 at 2019-12-10 17:00:18 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0Ar2INS1BSQjS02Lfx+S6/MOBZxFw/Gd+K+vn5iJWqrVNvguYGQx2D3BQfwXAdt8EHauiVNNtrQlCQDBXmBJxQ==", "shop"=>"shopnix.myshopify.com"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 17:00:18 +0200
+Started POST "/login" for ::1 at 2019-12-10 17:00:22 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0Ar2INS1BSQjS02Lfx+S6/MOBZxFw/Gd+K+vn5iJWqrVNvguYGQx2D3BQfwXAdt8EHauiVNNtrQlCQDBXmBJxQ==", "shop"=>"shopnix.myshopify.com"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 17:00:22 +0200
+Started GET "/" for ::1 at 2019-12-10 17:04:49 +0200
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#index as HTML
+Redirected to http://localhost:3000/login
+Completed 302 Found in 26ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-12-10 17:04:49 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb (2.0ms)
+Completed 200 OK in 8ms (Views: 5.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-12-10 17:04:57 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uh5ztJT+I3mNvwISHHEBq/kvu/51Ofsst1qgyhVvJiC/In26IC8XhZM1DmV0b0g8GlcQ62O3vAVq/A+U04Y1Tw==", "shop"=>"shopnix.myshopify.com"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 17:04:57 +0200
+Started POST "/login" for ::1 at 2019-12-10 17:05:14 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0Ar2INS1BSQjS02Lfx+S6/MOBZxFw/Gd+K+vn5iJWqrVNvguYGQx2D3BQfwXAdt8EHauiVNNtrQlCQDBXmBJxQ==", "shop"=>"shopnixtest.myshopify.com"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 17:05:14 +0200
+Started POST "/login" for ::1 at 2019-12-10 17:05:45 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uh5ztJT+I3mNvwISHHEBq/kvu/51Ofsst1qgyhVvJiC/In26IC8XhZM1DmV0b0g8GlcQ62O3vAVq/A+U04Y1Tw==", "shop"=>"nixshoptest.myshopify.com"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 17:05:46 +0200
+Started POST "/login" for ::1 at 2019-12-10 17:17:08 +0200
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uh5ztJT+I3mNvwISHHEBq/kvu/51Ofsst1qgyhVvJiC/In26IC8XhZM1DmV0b0g8GlcQ62O3vAVq/A+U04Y1Tw==", "shop"=>"nixshoptest.myshopify.com"}
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_layout_styles.html.erb (0.4ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_typography_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_card_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_button_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb (253.0ms)
+Completed 200 OK in 263ms (Views: 258.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login?return_to=%2F%3F&shop=nixshoptest.myshopify.com&top_level=true" for ::1 at 2019-12-10 17:17:09 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Parameters: {"return_to"=>"/?", "shop"=>"nixshoptest.myshopify.com", "top_level"=>"true"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 17:17:09 +0200
+Started POST "/login" for ::1 at 2019-12-10 17:17:16 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uh5ztJT+I3mNvwISHHEBq/kvu/51Ofsst1qgyhVvJiC/In26IC8XhZM1DmV0b0g8GlcQ62O3vAVq/A+U04Y1Tw==", "shop"=>"nixshoptest.myshopify.com"}
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_layout_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_typography_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_card_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_button_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb (8.8ms)
+Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login?return_to=%2F%3F&shop=nixshoptest.myshopify.com&top_level=true" for ::1 at 2019-12-10 17:17:16 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Parameters: {"return_to"=>"/?", "shop"=>"nixshoptest.myshopify.com", "top_level"=>"true"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 17:17:16 +0200
+Started GET "/" for ::1 at 2019-12-10 18:01:24 +0200
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#index as HTML
+Redirected to http://localhost:3000/login
+Completed 302 Found in 22ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-12-10 18:01:24 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb (2.0ms)
+Completed 200 OK in 9ms (Views: 6.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-12-10 18:01:29 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"j1EDGSNcVpHPJz7Ef8IxoRDzRPAw+GhEc4vO17fi29yKbQ0Xl41ibdGtMrMX3Hg284vv5SZ2L22uLWGJcQvIsw==", "shop"=>"nixshoptest.myshopify.com"}
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_layout_styles.html.erb (0.4ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_typography_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_card_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_button_styles.html.erb (0.4ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb (256.9ms)
+Completed 200 OK in 260ms (Views: 258.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login?return_to=%2F%3F&shop=nixshoptest.myshopify.com&top_level=true" for ::1 at 2019-12-10 18:01:29 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Parameters: {"return_to"=>"/?", "shop"=>"nixshoptest.myshopify.com", "top_level"=>"true"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 4ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 18:01:29 +0200
+Started GET "/" for ::1 at 2019-12-10 18:02:59 +0200
+Processing by HomeController#index as HTML
+Redirected to http://localhost:3000/login
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-12-10 18:02:59 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb (0.8ms)
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-12-10 18:03:02 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/oTr4rC9HwiyzGf47xvzssAbEJsUNUEVD+SzqbzDIkL7uOXsBGwr9KxGa4+HBbolI2O7jgK7BjzSQhz3eioxLQ==", "shop"=>"nixshoptest.myshopify.com"}
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_layout_styles.html.erb (0.6ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_typography_styles.html.erb (0.5ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_card_styles.html.erb (0.4ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_button_styles.html.erb (0.5ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb (18.2ms)
+Completed 200 OK in 26ms (Views: 25.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login?return_to=%2F%3F&shop=nixshoptest.myshopify.com&top_level=true" for ::1 at 2019-12-10 18:03:02 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Parameters: {"return_to"=>"/?", "shop"=>"nixshoptest.myshopify.com", "top_level"=>"true"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 18:03:02 +0200
+Started GET "/login" for ::1 at 2019-12-10 18:05:08 +0200
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by ShopifyApp::SessionsController#new as HTML
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb (2.5ms)
+Completed 200 OK in 13ms (Views: 7.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-12-10 18:05:10 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"g7zoQLIbvHTDYJZ7yMDgF2gKf+1y7sHM5M+g2pwDzuqGgOZOBsqIiN3qmgyg3qmAi3LU+GRghuU5aQ+EWurdhQ==", "shop"=>"nixshoptest.myshopify.com"}
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_layout_styles.html.erb (0.4ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_typography_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_card_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_button_styles.html.erb (0.4ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb (269.4ms)
+Completed 200 OK in 273ms (Views: 271.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login?return_to=%2F%3F&shop=nixshoptest.myshopify.com&top_level=true" for ::1 at 2019-12-10 18:05:11 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Parameters: {"return_to"=>"/?", "shop"=>"nixshoptest.myshopify.com", "top_level"=>"true"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 18:05:11 +0200
+Started GET "/login" for ::1 at 2019-12-10 18:05:39 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb (1.1ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-12-10 18:05:42 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HbK3W5esqqawycuFhTTRNrSmT+e4UNpXSbuaeGKaopoYjrlVI32eWq5Dx/LtKpihV97k8q7enX6UHTUmpHOx9Q==", "shop"=>"nixshoptest.myshopify.com"}
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_layout_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_typography_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_card_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_button_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb (8.7ms)
+Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login?return_to=%2F%3F&shop=nixshoptest.myshopify.com&top_level=true" for ::1 at 2019-12-10 18:05:42 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Parameters: {"return_to"=>"/?", "shop"=>"nixshoptest.myshopify.com", "top_level"=>"true"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 18:05:42 +0200
+Started GET "/" for ::1 at 2019-12-10 18:09:46 +0200
+Processing by HomeController#index as HTML
+Redirected to http://localhost:3000/login
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-12-10 18:09:46 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb (1.0ms)
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-12-10 18:09:49 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Y6x6vveP/IlIv8AMBxnt5aXosDTo+99bUnkInlk0JdBmkHSwQ17IdVY1zHtvB6RyRpAbIf51mHKP36fAn902vw==", "shop"=>"nixshoptest.myshopify.com"}
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_layout_styles.html.erb (0.6ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_typography_styles.html.erb (0.4ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_card_styles.html.erb (0.4ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_button_styles.html.erb (0.5ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb (20.3ms)
+Completed 200 OK in 28ms (Views: 27.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login?return_to=%2F%3F&shop=nixshoptest.myshopify.com&top_level=true" for ::1 at 2019-12-10 18:09:50 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Parameters: {"return_to"=>"/?", "shop"=>"nixshoptest.myshopify.com", "top_level"=>"true"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 18:09:50 +0200
+Started GET "/" for ::1 at 2019-12-10 18:23:56 +0200
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#index as HTML
+Redirected to http://localhost:3000/login
+Completed 302 Found in 20ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-12-10 18:23:56 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb (1.9ms)
+Completed 200 OK in 8ms (Views: 6.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-12-10 18:24:03 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JdwEoMtqwAPLLjNlO8KRVE0kXrYNiKizsdX8qfouJKog4Aquf7v0/9WkPxJT3NjDrlz1oxsG75psc1P3PMc3xQ==", "shop"=>"nixshop.myshopify.com"}
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_layout_styles.html.erb (0.4ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_typography_styles.html.erb (0.4ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_card_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_button_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb (249.1ms)
+Completed 200 OK in 252ms (Views: 250.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login?return_to=%2F%3F&shop=nixshop.myshopify.com&top_level=true" for ::1 at 2019-12-10 18:24:03 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Parameters: {"return_to"=>"/?", "shop"=>"nixshop.myshopify.com", "top_level"=>"true"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 18:24:03 +0200
+Started GET "/" for ::1 at 2019-12-10 18:26:29 +0200
+Processing by HomeController#index as HTML
+Redirected to http://localhost:3000/login
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-12-10 18:26:29 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb (0.9ms)
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-12-10 18:26:35 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4hnz2nyRW7uO1PC8D58EM2Aw3TwyamHlKGafOP2TcO7nJf3UyEBvR5Be/MtngU2kg0h2KSTkJsz1wDBmO3pjgQ==", "shop"=>"nixshoptest.myshopify.com"}
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_layout_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_typography_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_card_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_button_styles.html.erb (0.4ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb (17.4ms)
+Completed 200 OK in 22ms (Views: 20.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login?return_to=%2F%3F&shop=nixshoptest.myshopify.com&top_level=true" for ::1 at 2019-12-10 18:26:35 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Parameters: {"return_to"=>"/?", "shop"=>"nixshoptest.myshopify.com", "top_level"=>"true"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 18:26:35 +0200
+Started GET "/?hmac=780b1c871f37ed096246d2e8ef00ac0180996d01ee7b7bb643855989b2a198ee&shop=nixshoptest.myshopify.com&timestamp=1575995272" for ::1 at 2019-12-10 18:28:34 +0200
+Processing by HomeController#index as HTML
+  Parameters: {"hmac"=>"780b1c871f37ed096246d2e8ef00ac0180996d01ee7b7bb643855989b2a198ee", "shop"=>"nixshoptest.myshopify.com", "timestamp"=>"1575995272"}
+Redirected to http://localhost:3000/login?shop=nixshoptest.myshopify.com
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login?shop=nixshoptest.myshopify.com" for ::1 at 2019-12-10 18:28:34 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Parameters: {"shop"=>"nixshoptest.myshopify.com"}
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_layout_styles.html.erb (0.4ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_typography_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_card_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_button_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb (14.6ms)
+Completed 200 OK in 17ms (Views: 16.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login?return_to=%2F%3Fhmac%3D780b1c871f37ed096246d2e8ef00ac0180996d01ee7b7bb643855989b2a198ee%26shop%3Dnixshoptest.myshopify.com%26timestamp%3D1575995272&shop=nixshoptest.myshopify.com&top_level=true" for ::1 at 2019-12-10 18:28:34 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Parameters: {"return_to"=>"/?hmac=780b1c871f37ed096246d2e8ef00ac0180996d01ee7b7bb643855989b2a198ee&shop=nixshoptest.myshopify.com&timestamp=1575995272", "shop"=>"nixshoptest.myshopify.com", "top_level"=>"true"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 18:28:34 +0200
+Started GET "/login" for ::1 at 2019-12-10 18:31:34 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb (0.8ms)
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-12-10 18:31:36 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0Sjsb8t/OfUjocILYpUoV/NWU+ITx1LfVUIc9GZ8hrfUFOJhf64NCT0rznwKi2HAEC749wVJFfaI5LOqoJWV2A==", "shop"=>"nixshoptest.myshopify.com"}
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_layout_styles.html.erb (0.4ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_typography_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_card_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_button_styles.html.erb (0.4ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb (19.4ms)
+Completed 200 OK in 23ms (Views: 21.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login?return_to=%2F%3Fhmac%3D780b1c871f37ed096246d2e8ef00ac0180996d01ee7b7bb643855989b2a198ee%26shop%3Dnixshoptest.myshopify.com%26timestamp%3D1575995272&shop=nixshoptest.myshopify.com&top_level=true" for ::1 at 2019-12-10 18:31:36 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Parameters: {"return_to"=>"/?hmac=780b1c871f37ed096246d2e8ef00ac0180996d01ee7b7bb643855989b2a198ee&shop=nixshoptest.myshopify.com&timestamp=1575995272", "shop"=>"nixshoptest.myshopify.com", "top_level"=>"true"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 18:31:36 +0200
+Started POST "/login" for ::1 at 2019-12-10 18:31:48 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0Sjsb8t/OfUjocILYpUoV/NWU+ITx1LfVUIc9GZ8hrfUFOJhf64NCT0rznwKi2HAEC749wVJFfaI5LOqoJWV2A==", "shop"=>"nixshoptest.myshopify.com"}
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_layout_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_typography_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_card_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_button_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb (8.7ms)
+Completed 200 OK in 12ms (Views: 10.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login?return_to=%2F%3Fhmac%3D780b1c871f37ed096246d2e8ef00ac0180996d01ee7b7bb643855989b2a198ee%26shop%3Dnixshoptest.myshopify.com%26timestamp%3D1575995272&shop=nixshoptest.myshopify.com&top_level=true" for ::1 at 2019-12-10 18:31:48 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Parameters: {"return_to"=>"/?hmac=780b1c871f37ed096246d2e8ef00ac0180996d01ee7b7bb643855989b2a198ee&shop=nixshoptest.myshopify.com&timestamp=1575995272", "shop"=>"nixshoptest.myshopify.com", "top_level"=>"true"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 18:31:48 +0200
+Started GET "/login" for ::1 at 2019-12-10 18:32:10 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb (0.9ms)
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-12-10 18:32:11 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6aeJ7E5gs8mDQLnIoSNgnGAtXYOfzPqAnn5uLTCDMbDsm4fi+rGHNZ3Ktb/JPSkLg1X2lolCvalD2MFz9moi3w==", "shop"=>"nixshoptest.myshopify.com"}
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_layout_styles.html.erb (0.4ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_typography_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_card_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_button_styles.html.erb (0.4ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb (16.2ms)
+Completed 200 OK in 24ms (Views: 23.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login?return_to=%2F%3Fhmac%3D780b1c871f37ed096246d2e8ef00ac0180996d01ee7b7bb643855989b2a198ee%26shop%3Dnixshoptest.myshopify.com%26timestamp%3D1575995272&shop=nixshoptest.myshopify.com&top_level=true" for ::1 at 2019-12-10 18:32:11 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Parameters: {"return_to"=>"/?hmac=780b1c871f37ed096246d2e8ef00ac0180996d01ee7b7bb643855989b2a198ee&shop=nixshoptest.myshopify.com&timestamp=1575995272", "shop"=>"nixshoptest.myshopify.com", "top_level"=>"true"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 18:32:11 +0200
+Started GET "/login" for ::1 at 2019-12-10 18:32:15 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb (0.9ms)
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-12-10 18:32:16 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb (0.8ms)
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-12-10 18:32:18 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5XybHMN4+AX/zuoRtv17teKjgZg091Z3yG1uD4C1oxjgQJUSd6nM+eFE5mbe4zIiAdsqjSJ5EV4Vy8FRRlywdw==", "shop"=>"nixshoptest.myshopify.com"}
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_layout_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_typography_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_card_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_button_styles.html.erb (0.2ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb (8.1ms)
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login?return_to=%2F%3Fhmac%3D780b1c871f37ed096246d2e8ef00ac0180996d01ee7b7bb643855989b2a198ee%26shop%3Dnixshoptest.myshopify.com%26timestamp%3D1575995272&shop=nixshoptest.myshopify.com&top_level=true" for ::1 at 2019-12-10 18:32:18 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Parameters: {"return_to"=>"/?hmac=780b1c871f37ed096246d2e8ef00ac0180996d01ee7b7bb643855989b2a198ee&shop=nixshoptest.myshopify.com&timestamp=1575995272", "shop"=>"nixshoptest.myshopify.com", "top_level"=>"true"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 18:32:18 +0200
+Started GET "/login" for ::1 at 2019-12-10 18:40:37 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/new.html.erb (1.1ms)
+Completed 200 OK in 6ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-12-10 18:40:41 +0200
+Processing by ShopifyApp::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ApZiV0zFMLwHwxZTS0vfpIQLJlRnb1OVtjjVauJX/OIHqmxZ+BQEQBlJGiQjVZYzZ3ONQXHhFLxrnno0JL7vjQ==", "shop"=>"nixshoptest.myshopify.com"}
+  Rendering /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_layout_styles.html.erb (0.5ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_typography_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_card_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/partials/_button_styles.html.erb (0.3ms)
+  Rendered /Users/ivan/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/shopify_app-11.3.2/app/views/shopify_app/sessions/request_storage_access.html.erb (18.2ms)
+Completed 200 OK in 26ms (Views: 24.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login?return_to=%2F%3Fhmac%3D780b1c871f37ed096246d2e8ef00ac0180996d01ee7b7bb643855989b2a198ee%26shop%3Dnixshoptest.myshopify.com%26timestamp%3D1575995272&shop=nixshoptest.myshopify.com&top_level=true" for ::1 at 2019-12-10 18:40:41 +0200
+Processing by ShopifyApp::SessionsController#new as HTML
+  Parameters: {"return_to"=>"/?hmac=780b1c871f37ed096246d2e8ef00ac0180996d01ee7b7bb643855989b2a198ee&shop=nixshoptest.myshopify.com&timestamp=1575995272", "shop"=>"nixshoptest.myshopify.com", "top_level"=>"true"}
+Redirected to http://localhost:3000/auth/shopify
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/shopify" for ::1 at 2019-12-10 18:40:41 +0200
+Started GET "/auth/shopify/callback?code=4de13f0c96976b392a8119f384c5e846&hmac=1f64eaabf27f87a749775a1c9f366af30456de239833484be71332ea6942a3aa&shop=nixshoptest.myshopify.com&state=2bff08b239574f724574bc9416bf2173edc028aeeba4a958&timestamp=1575996137" for ::1 at 2019-12-10 18:42:19 +0200
+Processing by ShopifyApp::CallbackController#callback as HTML
+  Parameters: {"code"=>"4de13f0c96976b392a8119f384c5e846", "hmac"=>"1f64eaabf27f87a749775a1c9f366af30456de239833484be71332ea6942a3aa", "shop"=>"nixshoptest.myshopify.com", "state"=>"2bff08b239574f724574bc9416bf2173edc028aeeba4a958", "timestamp"=>"1575996137"}
+Redirected to http://localhost:3000/?hmac=780b1c871f37ed096246d2e8ef00ac0180996d01ee7b7bb643855989b2a198ee&shop=nixshoptest.myshopify.com&timestamp=1575995272
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/?hmac=780b1c871f37ed096246d2e8ef00ac0180996d01ee7b7bb643855989b2a198ee&shop=nixshoptest.myshopify.com&timestamp=1575995272" for ::1 at 2019-12-10 18:42:19 +0200
+Processing by HomeController#index as HTML
+  Parameters: {"hmac"=>"780b1c871f37ed096246d2e8ef00ac0180996d01ee7b7bb643855989b2a198ee", "shop"=>"nixshoptest.myshopify.com", "timestamp"=>"1575995272"}
+  Rendering home/index.html.erb within layouts/embedded_app
+  Rendered home/index.html.erb within layouts/embedded_app (0.9ms)
+  Rendered layouts/_flash_messages.html.erb (0.7ms)
+Completed 200 OK in 1127ms (Views: 136.3ms | ActiveRecord: 0.0ms)
+
+
