@@ -45,6 +45,9 @@ gem "shopify_api"
 # Style lint
 gem "rubocop"
 
+# GraphQL integration
+gem "graphql"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: %i[mri mingw x64_mingw]
@@ -72,3 +75,5 @@ gem "shopify_app"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 gem "dotenv-rails", group: %i[test development]
+
+gem "graphiql-rails", group: :development
