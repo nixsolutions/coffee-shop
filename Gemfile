@@ -44,6 +44,7 @@ gem "shopify_api"
 
 # Style lint
 gem "rubocop"
+gem "rubocop-rails"
 
 # GraphQL integration
 gem "graphql"
