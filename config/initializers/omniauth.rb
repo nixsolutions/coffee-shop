@@ -1,6 +1,6 @@
-Rails.application.config.middleware.use OmniAuth::Builder do
-  # frozen_string_literal: true
+# frozen_string_literal: true
 
+Rails.application.config.middleware.use OmniAuth::Builder do
   provider :shopify,
            ShopifyApp.configuration.api_key,
            ShopifyApp.configuration.secret,
@@ -13,7 +13,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
                       "https://#{shopify_auth_params[:shop]}"
                     else
                       ""
-             end
+                    end
 
              strategy.options[:client_options][:site] = shop
              strategy.options[:old_client_secret] = ShopifyApp.configuration.old_secret
