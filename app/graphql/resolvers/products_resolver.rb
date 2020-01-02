@@ -5,7 +5,6 @@ module Resolvers
     type Types::ProductsConnectionType, null: true
 
     def resolve
-      binding.pry
       ShopifyAPI::Product.find(:all, params: {limit: 10}).to_a
     end
   end
