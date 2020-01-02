@@ -200,6 +200,9 @@ GEM
       sprockets (>= 3.0.0)
     thor (1.0.1)
     thread_safe (0.3.6)
+    turbolinks (5.2.1)
+      turbolinks-source (~> 5.2)
+    turbolinks-source (5.2.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     unicode-display_width (1.6.0)
@@ -232,6 +235,7 @@ DEPENDENCIES
   shopify_app
   spring
   spring-watcher-listen (~> 2.0.0)
+  turbolinks
   tzinfo-data
   web-console (>= 3.3.0)
 
