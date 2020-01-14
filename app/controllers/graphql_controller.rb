@@ -2,6 +2,7 @@
 
 class GraphqlController < ApplicationController
   def execute
+    Shop.first.connect_to_store
     variables = ensure_hash(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]

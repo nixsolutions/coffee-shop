@@ -56,7 +56,7 @@ gem "puma", "~> 3.11"
 gem "rack-cors", require: "rack/cors"
 gem "rails", "~> 5.2.4"
 gem "rubocop"
-gem "shopify_api"
+#gem "shopify_api"
 gem "turbolinks"
 
 group :development, :test do

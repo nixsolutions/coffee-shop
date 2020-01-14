@@ -6,6 +6,8 @@ module Resolvers
 
     def resolve
       ShopifyAPI::Product.find(:all, params: {limit: 10}).to_a
+    rescue Errno::ECONNRESET
+      retry
     end
   end
 end
