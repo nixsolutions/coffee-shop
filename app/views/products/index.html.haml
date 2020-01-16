@@ -1,0 +1,19 @@
+%h2 Products
+%ul
+  - @products.each do |product|
+    %li= link_to product.title, product_path(product.attributes["id"]), target: "_top"
+
+%hr/
+
+%h2 Webhooks
+- if @webhooks.present?
+  %ul
+    - @webhooks.each do |webhook|
+      %li
+        = webhook.topic
+        \: #{webhook.address}
+- else
+  %p This app has not created any webhooks for this Shop. Add webhooks to your ShopifyApp initializer if you need webhooks
+
+
+= link_to "New", new_product_path
