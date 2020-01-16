@@ -1,4 +1,4 @@
-= form_for :product do |form|
+= form_for @product, url: product_path(@product), method: :put do |form|
 
   = form.label :title
   = form.text_field :title
@@ -8,6 +8,16 @@
 
   = form.label :product_type
   = form.text_field :product_type
+
+  = fields_for :variant, @product.variants[0] do |variant|
+
+    = variant.label :price
+    = variant.text_field :price
+
+  = fields_for :position, @product.metafields[0] do |position|
+
+    = position.label :position
+    = position.text_field :value
 
   = form.submit
 

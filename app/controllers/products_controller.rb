@@ -14,9 +14,17 @@ class ProductsController < AuthenticatedController
 
   def create
 
-    binding.pry
 
-    @product = Product.new(params)
+    @product = ShopifyAPI::Product.new(params)
+
+    # @product.add_metafield(ShopifyAPI::Metafield.new({
+    #   :description => 'Location',
+    #   :namespace => "inventory",
+    #   :key => "position",
+    #   :value => '123123213213213213213',
+    #   :owner_type => "PRODUCT",
+    #   :value_type => 'string'
+    # }))
 
     if @product.save
       redirect_to @product
@@ -34,10 +42,18 @@ class ProductsController < AuthenticatedController
   end
 
   def update
-    binding.pry
     @product = ShopifyAPI::Product.find(params[:id])
-    @prodcut.attributes = params
+    @product.title = params[:shopify_api_product][:title]
+    @product.body_html = params[:shopify_api_product][:body_html]
+    @product.product_type = params[:shopify_api_product][:product_type]
+    @product.variants[0].price = params[:variant][:price]
+    @product.metafields[0].update_attributes(value: params[:position][:value])
 
+    if @product.save
+      render :show
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -52,6 +68,11 @@ class ProductsController < AuthenticatedController
     }
   end
 
+  private 
+
+  def permit_params
+    params.permit(:title, :body_html, :product_type)
+  end
 end
 
 
