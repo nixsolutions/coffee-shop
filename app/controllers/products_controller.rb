@@ -34,10 +34,14 @@ class ProductsController < AuthenticatedController
     @product.product_type = params[:shopify_api_product][:product_type]
     @product.variants[0].price = params[:variant][:price]
 
-    if @product.metafields[0].nil?
-      add_position(@product, params[:position][:value]) 
+    @metafields = @product.metafields
+
+    @metafields.delete_if { |meta| meta.key != "position" }
+
+    if @metafields.empty?
+      add_metafield(@product, "position", params[:position][:value]) 
     else
-      @product.metafields[0].update_attributes(value: params[:position][:value])
+      @metafields[0].update_attributes(value: params[:position][:value])
     end
 
     if @product.save
@@ -61,11 +65,11 @@ class ProductsController < AuthenticatedController
 
   private 
 
-  def add_position(product, value)
+  def add_metafield(product, key, value)
     product.add_metafield(ShopifyAPI::Metafield.new({
-      :description => 'Location',
+      :description => key,
       :namespace => "inventory",
-      :key => "position",
+      :key => key,
       :value => value,
       :owner_type => "PRODUCT",
       :value_type => 'string'

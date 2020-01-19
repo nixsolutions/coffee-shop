@@ -2,19 +2,19 @@
 
   = form.label :title
   = form.text_field :title
-
+  %li
   = form.label :body_html
   = form.text_area :body_html
-
+  %li
   = form.label :product_type
   = form.text_field :product_type
-
+  %li
   = fields_for :variant, @product.variants[0] do |variant|
 
     = variant.label :price
     = variant.text_field :price
 
-  = fields_for :position, @product.metafields[0] do |position|
+  = fields_for :position,  @product.metafields.delete_if { |meta| meta.key != "position" }[0] do |position|
 
     = position.label :position
     = position.text_field :value
