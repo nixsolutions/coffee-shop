@@ -1,13 +1,23 @@
-%h2
-  Product #{@product.title} with id  #{@product.id}
-- @product.attributes.each do |attribute|
-  %li
-    = attribute.first
-    \- #{attribute.last}
+.container
+  %h2 Product #{@product.title}
+  %br/
+  .jumbotron
+    .row
+      .col-4
+        %ul.list-group
+          %li.list-group-item= @product.id
+          %li.list-group-item= @product.title
+          %li.list-group-item= @product.vendor
+          %li.list-group-item= @product.product_type
+          %li.list-group-item= @product.created_at
+          %li.list-group-item= @product.updated_at
+          %li.list-group-item= @product.published_at
+          %li.list-group-item= @product.handle
+          %li.list-group-item= @product.published_scope
+          %li.list-group-item= @product.variants[0].price
 
-
-MEtafields
-- @product.metafields.each do |attribute|
-  %li
-    = attribute.value
-= link_to "Edit", edit_product_path(@product.id )
+      .col-8
+        %img.rounded.img-fluid{:alt => "Default", :src => "https://img1.wsimg.com/isteam/stock/3731/:/"}/
+        %br/
+        %br/
+        = raw(@product.body_html)

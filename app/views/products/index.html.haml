@@ -1,19 +1,19 @@
-%h2 Products
-%ul
-  - @products.each do |product|
-    %li= link_to product.title, product_path(product.attributes["id"]), target: "_top"
+.container
+  %h2 Products
+  %br/
 
-%hr/
+  %table.table.table-striped
+    %thead.thead-dark
+      %tr
+        %th{:scope => "col"} Name
+        %th{:scope => "col"} Description
+        %th{:scope => "col"} Price
+        %th{:scope => "col"} Action
 
-%h2 Webhooks
-- if @webhooks.present?
-  %ul
-    - @webhooks.each do |webhook|
-      %li
-        = webhook.topic
-        \: #{webhook.address}
-- else
-  %p This app has not created any webhooks for this Shop. Add webhooks to your ShopifyApp initializer if you need webhooks
-
-
-= link_to "New", new_product_path
+    %tbody
+      - @products.each do |product|
+        %tr
+          %td= link_to product.title, product_path(product.attributes["id"])
+          %td= raw(product.body_html)
+          %td= product.variants[0].price
+          %td= link_to "Edit", edit_product_path(product.attributes["id"])
