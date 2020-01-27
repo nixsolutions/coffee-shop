@@ -2,24 +2,17 @@
 
 class ProductsController < AuthenticatedController
   def index
-
-    binding.pry
-
-    @products = ShopifyAPI::Product.find(:all, params: { limit: 10 })
+    @products = ShopifyAPI::Product.find(:all)
   end
 
   def new
     @product = ShopifyAPI::Product.new(set_attributes)
+
   end
 
   def create
-    @product = ShopifyAPI::Product.create(permit_params)
-
-    if @product.save
-      render :show
-    else
-      render :new
-    end
+    @product = Products::Create.call(params: params, permit: permit_params)
+    render :show
   end
 
   def show
@@ -43,8 +36,10 @@ class ProductsController < AuthenticatedController
     {
       title: "",
       body_html: "",
-      product_type: "",
-
+      product_type: "PRODUCT",
+      value: "",
+      price: "",
+      weight: "",
     }
   end
 

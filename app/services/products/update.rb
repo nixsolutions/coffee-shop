@@ -20,20 +20,28 @@ module Products
       product.body_html = params[:shopify_api_product][:body_html]
       product.product_type = params[:shopify_api_product][:product_type]
       product.variants[0].price = params[:variant][:price]
+      product.variants[0].price = params[:variant][:weight]
+      add_image if params[:shopify_api_product][:image]
       product.namespace = :inventory
 
       metafields = product.metafields
-
       metafields.delete_if { |meta| meta.key != "position" }
 
       if metafields.empty?
-        add_metafield(product, "position", params[:position][:value])
+        add_metafield(product, "position", params[:metafields][:value])
       elsif !params[:position].nil?
-        metafields[0].update_attributes(value: params[:position][:value])
+        metafields[0].update_attributes(value: params[:metafields][:value])
       end
 
       product.save
       product
+    end
+
+    def add_image
+      image = ShopifyAPI::Image.new
+      f = File.read(params[:shopify_api_product][:image].tempfile)
+      image.attach_image(f)
+      product.images << image
     end
 
     def add_metafield(product, key, value)

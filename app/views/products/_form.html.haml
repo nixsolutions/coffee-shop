@@ -16,7 +16,7 @@
     .col-3.col-form-label
       = form.label :image
     .col-9
-      = form.file_field multiple: true
+      = form.file_field :image
 
   = fields_for :variant, product.variants[0] do |variant|
     .form-group.row
@@ -40,10 +40,10 @@
   = fields_for :metafields, product.metafields[0] do |meta|
     .form-group.row
       .col-3.col-form-label
-        = meta.label :value
+        = meta.label :position
       .col-9
         .input-group
-          = meta.text_field :value, class: "form-control"
+          = meta.text_field :position, class: "form-control"
           .input-group-append
             .input-group-text
               %i.fa.fa-area-chart
