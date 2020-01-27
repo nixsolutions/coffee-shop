@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   post "/graphql", to: "graphql#execute"
   mount ShopifyApp::Engine, at: "/"
   root to: "products#index"

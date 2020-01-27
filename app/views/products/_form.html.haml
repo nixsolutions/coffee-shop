@@ -1,22 +1,53 @@
-= form_for @product, url: product_path(@product), method: :put do |form|
+= form_for product, url: product_path(product), method: method do |form|
 
-  = form.label :title
-  = form.text_field :title
-  %li
-  = form.label :body_html
-  = form.text_area :body_html
-  %li
-  = form.label :product_type
-  = form.text_field :product_type
-  %li
-  = fields_for :variant, @product.variants[0] do |variant|
+  .form-group.row
+    .col-3.col-form-label
+      = form.label :title
+    .col-9
+      = form.text_field :title, class: "form-control"
 
-    = variant.label :price
-    = variant.text_field :price
+  .form-group.row
+    .col-3.col-form-label
+      = form.label :body_html
+    .col-9
+      = form.cktext_area :body_html, class: "form-control"
 
-  = fields_for :position,  @product.metafields.delete_if { |meta| meta.key != "position" }[0] do |position|
+  .form-group.row
+    .col-3.col-form-label
+      = form.label :image
+    .col-9
+      = form.file_field multiple: true
 
-    = position.label :position
-    = position.text_field :value
+  = fields_for :variant, product.variants[0] do |variant|
+    .form-group.row
+      .col-3.col-form-label
+        = variant.label :weight
 
-  = form.submit
+      .col-9
+        .input-group
+          = variant.text_field :weight, class: "form-control"
+          .input-group-append
+            .input-group-text kg
+
+    .form-group.row
+      .col-3.col-form-label
+        = variant.label :price
+      .col-9
+        .input-group
+          = variant.text_field :price, class: "form-control"
+          .input-group-append
+            .input-group-text $
+  = fields_for :metafields, product.metafields[0] do |meta|
+    .form-group.row
+      .col-3.col-form-label
+        = meta.label :value
+      .col-9
+        .input-group
+          = meta.text_field :value, class: "form-control"
+          .input-group-append
+            .input-group-text
+              %i.fa.fa-area-chart
+
+  .form-group.row
+    .offset-3.col-9
+      = form.submit class: "btn btn-primary"

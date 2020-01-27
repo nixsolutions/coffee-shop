@@ -61,6 +61,7 @@ gem "haml"
 gem "haml-rails", "~> 2.0"
 gem "bootstrap", '~> 4.4.1'
 gem "jquery-rails"
+gem "ckeditor"
 
 group :development, :test do
   gem "dotenv-rails"

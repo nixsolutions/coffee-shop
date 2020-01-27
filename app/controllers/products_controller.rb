@@ -2,6 +2,9 @@
 
 class ProductsController < AuthenticatedController
   def index
+
+    binding.pry
+
     @products = ShopifyAPI::Product.find(:all, params: { limit: 10 })
   end
 
@@ -41,10 +44,11 @@ class ProductsController < AuthenticatedController
       title: "",
       body_html: "",
       product_type: "",
+
     }
   end
 
-  private 
+  private
 
   def permit_params
     params[:shopify_api_product]

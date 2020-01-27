@@ -20,14 +20,15 @@ module Products
       product.body_html = params[:shopify_api_product][:body_html]
       product.product_type = params[:shopify_api_product][:product_type]
       product.variants[0].price = params[:variant][:price]
+      product.namespace = :inventory
 
       metafields = product.metafields
 
       metafields.delete_if { |meta| meta.key != "position" }
 
       if metafields.empty?
-        add_metafield(product, "position", params[:position][:value]) 
-      else
+        add_metafield(product, "position", params[:position][:value])
+      elsif !params[:position].nil?
         metafields[0].update_attributes(value: params[:position][:value])
       end
 
