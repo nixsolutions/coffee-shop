@@ -20,8 +20,8 @@ module Products
       product.body_html = params[:shopify_api_product][:body_html]
       product.product_type = params[:shopify_api_product][:product_type]
       product.variants[0].price = params[:variant][:price]
-      product.variants[0].price = params[:variant][:weight]
-      add_image if params[:shopify_api_product][:image]
+      product.variants[0].weight = params[:variant][:weight]
+      add_image(product) if params[:shopify_api_product][:image]
       product.namespace = :inventory
 
       metafields = product.metafields
@@ -37,7 +37,7 @@ module Products
       product
     end
 
-    def add_image
+    def add_image(product)
       image = ShopifyAPI::Image.new
       f = File.read(params[:shopify_api_product][:image].tempfile)
       image.attach_image(f)
