@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Products
   class Create
     include Callable
@@ -34,14 +36,14 @@ module Products
     end
 
     def add_metafield(product, key, value)
-      product.add_metafield(ShopifyAPI::Metafield.new({
-        :description => key,
-        :namespace => "inventory",
-        :key => key,
-        :value => value,
-        :owner_type => "PRODUCT",
-        :value_type => 'string'
-      }))
+      product.add_metafield(ShopifyAPI::Metafield.new(
+                              description: key,
+                              namespace:   "inventory",
+                              key:         key,
+                              value:       value,
+                              owner_type:  "PRODUCT",
+                              value_type:  "string"
+                            ))
     end
   end
 end

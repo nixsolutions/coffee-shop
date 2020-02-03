@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-require 'active_resource/connection'
+
+require "active_resource/connection"
 
 ShopifyApp.configure do |config|
   config.application_name = ENV.fetch("SHOPIFY_APP_NAME", "My Shopify App")
@@ -12,4 +13,3 @@ ShopifyApp.configure do |config|
   config.api_version = "2019-10"
   config.session_repository = Shop
 end
-

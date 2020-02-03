@@ -7,7 +7,6 @@ class ProductsController < AuthenticatedController
 
   def new
     @product = ShopifyAPI::Product.new(set_attributes)
-
   end
 
   def create
@@ -34,12 +33,12 @@ class ProductsController < AuthenticatedController
 
   def set_attributes
     {
-      title: "",
-      body_html: "",
+      title:        "",
+      body_html:    "",
       product_type: "PRODUCT",
-      value: "",
-      price: "",
-      weight: "",
+      value:        "",
+      price:        "",
+      weight:       ""
     }
   end
 
@@ -48,10 +47,9 @@ class ProductsController < AuthenticatedController
   def permit_params
     params[:shopify_api_product]
       .permit(:title, :body_html, :product_type)
-      .merge({ vendor: "nixshoptest" })
+      .merge(vendor: "nixshoptest")
   end
 end
-
 
 # Create metafieldStorefrontVisibility
 #

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Products
   class Update
     include Callable
@@ -25,12 +27,12 @@ module Products
       product.namespace = :inventory
 
       metafields = product.metafields
-      metafields.delete_if { |meta| meta.key != "position" }
+      metafields.delete_if {|meta| meta.key != "position" }
 
       if metafields.empty?
         add_metafield(product, "position", params[:metafields][:value])
       elsif !params[:position].nil?
-        metafields[0].update_attributes(value: params[:metafields][:value])
+        metafields[0].update(value: params[:metafields][:value])
       end
 
       product.save
@@ -45,14 +47,14 @@ module Products
     end
 
     def add_metafield(product, key, value)
-      product.add_metafield(ShopifyAPI::Metafield.new({
-        :description => key,
-        :namespace => "inventory",
-        :key => key,
-        :value => value,
-        :owner_type => "PRODUCT",
-        :value_type => 'string'
-      }))
+      product.add_metafield(ShopifyAPI::Metafield.new(
+                              description: key,
+                              namespace:   "inventory",
+                              key:         key,
+                              value:       value,
+                              owner_type:  "PRODUCT",
+                              value_type:  "string"
+                            ))
     end
   end
 end

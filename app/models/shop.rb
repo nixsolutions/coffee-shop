@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Shop < ActiveRecord::Base
+class Shop < ApplicationRecord
   include ShopifyApp::SessionStorage
 
   def api_version
