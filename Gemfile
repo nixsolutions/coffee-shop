@@ -7,7 +7,7 @@ ruby "2.6.5"
 
 gem "bootsnap", ">= 1.1.0", require: false
 gem "bootstrap", "~> 4.4.1"
-gem "ckeditor"
+gem "ckeditor", "~> 4.2"
 gem "graphiql-rails", group: :development
 gem "graphql"
 gem "graphql-batch"

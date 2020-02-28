@@ -1,3 +1,6 @@
+:ruby
+  img_src = image_url(@product)
+
 .container
   %h2 Product #{@product.title}
   %br/
@@ -14,10 +17,10 @@
           %li.list-group-item= @product.published_at
           %li.list-group-item= @product.handle
           %li.list-group-item= @product.published_scope
-          %li.list-group-item= @product.variants[0].price
+          %li.list-group-item= @product.variants.first.price
 
       .col-8
-        %img.rounded.img-fluid{:alt => "Default", :src => "https://img1.wsimg.com/isteam/stock/3731/:/"}/
+        %img.rounded.img-fluid{:alt => "Default", :src => img_src}/
         %br/
         %br/
         = raw(@product.body_html)

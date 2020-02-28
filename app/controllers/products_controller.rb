@@ -6,11 +6,11 @@ class ProductsController < AuthenticatedController
   end
 
   def new
-    @product = ShopifyAPI::Product.new(set_attributes)
+    @product = ShopifyAPI::Product.new(set_empty_attributes)
   end
 
   def create
-    @product = Products::Create.call(params: params, permit: permit_params)
+    @product = Products::Create.call(permit_params)
     render :show
   end
 
@@ -23,7 +23,7 @@ class ProductsController < AuthenticatedController
   end
 
   def update
-    @product = Products::Update.call(params: params)
+    @product = Products::Update.call(permit_params)
     render :show
   end
 
@@ -31,49 +31,35 @@ class ProductsController < AuthenticatedController
     ShopifyAPI::Product.find(params[:id]).destroy
   end
 
-  def set_attributes
+  private
+
+  def set_empty_attributes
     {
       title:        "",
       body_html:    "",
       product_type: "PRODUCT",
-      value:        "",
-      price:        "",
-      weight:       ""
+      variants:     [
+        {
+          price:  "",
+          weight: ""
+        }
+      ],
+      metafields:   [
+        {
+          value: ""
+        }
+      ]
     }
   end
 
-  private
-
   def permit_params
-    params[:shopify_api_product]
-      .permit(:title, :body_html, :product_type)
+    params
+      .permit(
+        :id,
+        shopify_api_product: %i[title body_html product_type],
+        variants:            %i[weight price],
+        metafields:          [:value]
+      )
       .merge(vendor: "nixshoptest")
   end
 end
-
-# Create metafieldStorefrontVisibility
-#
-# client = ShopifyAPI::GraphQL.new
-
-# SHOP_NAME_QUERY = client.parse <<-'GRAPHQL'
-# mutation {
-#   metafieldStorefrontVisibilityCreate(
-#   input: {
-#     namespace: "test",
-#     key: "test",
-#     ownerType: PRODUCT
-#   }
-#   ) {
-#     metafieldStorefrontVisibility {
-#       id
-#     }
-#     userErrors {
-#       field
-#       message
-#     }
-#   }
-# }
-# GRAPHQL
-
-# result = client.query(SHOP_NAME_QUERY)
-# result.data.shop.name

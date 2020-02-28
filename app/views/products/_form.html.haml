@@ -1,4 +1,5 @@
-= form_for product, url: product_path(product), method: method do |form|
+
+= form_for product, url: form_product_url(product: product), method: method do |form|
 
   .form-group.row
     .col-3.col-form-label
@@ -18,7 +19,7 @@
     .col-9
       = form.file_field :image
 
-  = fields_for :variant, product.variants[0] do |variant|
+  = fields_for :variants, product.variants[0] do |variant|
     .form-group.row
       .col-3.col-form-label
         = variant.label :weight
@@ -37,13 +38,14 @@
           = variant.text_field :price, class: "form-control"
           .input-group-append
             .input-group-text $
+
   = fields_for :metafields, product.metafields[0] do |meta|
     .form-group.row
       .col-3.col-form-label
         = meta.label :position
       .col-9
         .input-group
-          = meta.text_field :position, class: "form-control"
+          = meta.text_field :value, class: "form-control"
           .input-group-append
             .input-group-text
               %i.fa.fa-area-chart

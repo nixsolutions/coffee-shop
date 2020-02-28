@@ -9,18 +9,28 @@ module Types
     end
 
     field :total_page_count, Integer, "Total # of pages, based on total count and pagesize", null: false
+
     def total_page_count
-      return 1 unless object.nodes&.count&.positive?
+      return default_page_count unless object.nodes&.count&.positive?
 
       my_total_count = object.nodes&.count
       possible_page_sizes = [my_total_count]
 
-      possible_page_sizes.push(object.arguments[:first]) if object.arguments[:first]
-      possible_page_sizes.push(object.arguments[:last]) if object.arguments[:last]
-
       actual_page_size = possible_page_sizes.min
+      setup_page_size(actual_page_size)
 
       (my_total_count / actual_page_size.to_f).ceil
+    end
+
+    private
+
+    def default_page_count
+      1
+    end
+
+    def setup_page_size(possible_page_sizes)
+      possible_page_sizes.push(object.arguments[:first]) if object.arguments[:first]
+      possible_page_sizes.push(object.arguments[:last]) if object.arguments[:last]
     end
   end
 end

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class GraphqlController < ApplicationController
+  before_action :connect_to_store, only: [:execute]
+
   def execute
     variables = ensure_hash(params[:variables])
     query = params[:query]
@@ -22,6 +24,10 @@ class GraphqlController < ApplicationController
   end
 
   private
+
+  def connect_to_store
+    Shop.first.connect_to_store
+  end
 
   def ensure_hash(ambiguous_param)
     case ambiguous_param
