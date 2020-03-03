@@ -18,7 +18,7 @@ jobs:
     - name: Set up Ruby 2.6
       uses: actions/setup-ruby@v1
       with:
-        ruby-version: 2.6.3
+        ruby-version: 2.6.x
 
     - name: Install PostgreSQL 11 client
       run: |
@@ -32,9 +32,8 @@ jobs:
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
-        bin/rails db:setup
+
 
     - name: Build and test with Rake
       run: |
         bundle exec rubocop
-        bundle exec rake test
