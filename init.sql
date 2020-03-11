@@ -1,0 +1,2 @@
+CREATE USER coffee;
+ALTER USER coffee WITH SUPERUSER;

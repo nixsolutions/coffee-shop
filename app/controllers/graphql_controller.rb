@@ -1,20 +1,21 @@
 # frozen_string_literal: true
 
 class GraphqlController < ApplicationController
-  # If accessing from outside this domain, nullify the session
-  # This allows for outside API access while preventing CSRF attacks,
-  # but you'll have to authenticate your user separately
-  # protect_from_forgery with: :null_session
+  before_action :connect_to_store, only: [:execute]
 
   def execute
     variables = ensure_hash(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
     context = {
-      # Query context goes here, for example:
       # current_user: current_user,
     }
-    result = CoffeeShopSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
+    result = CoffeeShopSchema.execute(
+      query,
+      variables:      variables,
+      context:        context,
+      operation_name: operation_name
+    )
     render json: result
   rescue StandardError => e
     raise e unless Rails.env.development?
@@ -24,7 +25,10 @@ class GraphqlController < ApplicationController
 
   private
 
-  # Handle form data, JSON body, or a blank value
+  def connect_to_store
+    Shop.first.connect_to_store
+  end
+
   def ensure_hash(ambiguous_param)
     case ambiguous_param
     when String

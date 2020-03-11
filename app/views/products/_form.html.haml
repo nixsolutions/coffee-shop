@@ -1,0 +1,55 @@
+
+= form_for product, url: form_product_url(product: product), method: method do |form|
+
+  .form-group.row
+    .col-3.col-form-label
+      = form.label :title
+    .col-9
+      = form.text_field :title, class: "form-control"
+
+  .form-group.row
+    .col-3.col-form-label
+      = form.label :body_html
+    .col-9
+      = form.cktext_area :body_html, class: "form-control"
+
+  .form-group.row
+    .col-3.col-form-label
+      = form.label :image
+    .col-9
+      = form.file_field :image
+
+  = fields_for :variants, product.variants[0] do |variant|
+    .form-group.row
+      .col-3.col-form-label
+        = variant.label :weight
+
+      .col-9
+        .input-group
+          = variant.text_field :weight, class: "form-control"
+          .input-group-append
+            .input-group-text kg
+
+    .form-group.row
+      .col-3.col-form-label
+        = variant.label :price
+      .col-9
+        .input-group
+          = variant.text_field :price, class: "form-control"
+          .input-group-append
+            .input-group-text $
+
+  = fields_for :metafields, product.metafields[0] do |meta|
+    .form-group.row
+      .col-3.col-form-label
+        = meta.label :position
+      .col-9
+        .input-group
+          = meta.text_field :value, class: "form-control"
+          .input-group-append
+            .input-group-text
+              %i.fa.fa-area-chart
+
+  .form-group.row
+    .offset-3.col-9
+      = form.submit class: "btn btn-primary"

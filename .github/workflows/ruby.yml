@@ -32,9 +32,8 @@ jobs:
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
-        bin/rails db:setup
+
 
     - name: Build and test with Rake
       run: |
         bundle exec rubocop
-        bundle exec rake test
