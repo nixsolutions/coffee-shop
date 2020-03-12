@@ -6,21 +6,45 @@
   %br/
   .jumbotron
     .row
-      .col-4
-        %ul.list-group
-          %li.list-group-item= @product.id
-          %li.list-group-item= @product.title
-          %li.list-group-item= @product.vendor
-          %li.list-group-item= @product.product_type
-          %li.list-group-item= @product.created_at
-          %li.list-group-item= @product.updated_at
-          %li.list-group-item= @product.published_at
-          %li.list-group-item= @product.handle
-          %li.list-group-item= @product.published_scope
-          %li.list-group-item= @product.variants.first.price
-
       .col-8
         %img.rounded.img-fluid{:alt => "Default", :src => img_src}/
         %br/
         %br/
-        = raw(@product.body_html)
+      .col-4
+        %table.table.table-bordered.table-striped
+          %tr
+            %td Id
+            %td= @product.id
+          %tr
+            %td Title
+            %td= @product.title
+          %tr
+            %td Vendor
+            %td= @product.vendor
+          %tr
+            %td Product type
+            %td= @product.product_type
+          %tr
+            %td Created at
+            %td= @product.created_at
+          %tr
+            %td Updated at
+            %td= @product.updated_at
+          %tr
+            %td Published at
+            %td= @product.published_at
+          %tr
+            %td Handle
+            %td= @product.handle
+          %tr
+            %td Published scope
+            %td= @product.published_scope
+          %tr
+            %td Price
+            %td= @product.variants.first.price
+          %tr
+            %td Position
+            %td= @product.metafields[0]&.value
+
+
+      = raw(@product.body_html)

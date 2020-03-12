@@ -15,6 +15,7 @@ module Products
       set_metafields
       set_image
       product.save
+      product
     end
 
     def set_image
