@@ -8,20 +8,7 @@ module Products
     end
 
     def call
-      create_product
-    end
-
-    private
-
-    attr_reader :params, :product
-
-    def create_product
       set_fields
-      set_metafields
-      set_image
-
-      product.save
-      product
     end
   end
 end
