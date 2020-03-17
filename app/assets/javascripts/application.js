@@ -17,7 +17,7 @@
 //= require popper
 //= require bootstrap
 //= require ckeditor/init
+//
+//*= require mapbox-gl-geocoder
+//*= require mapbox-gl
 //= require_tree .
-
-
-
