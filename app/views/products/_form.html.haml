@@ -39,6 +39,7 @@
           .input-group-append
             .input-group-text $
 
+
   = fields_for :metafields, product.metafields[0] do |meta|
     .form-group.row
       .col-3.col-form-label
@@ -49,6 +50,87 @@
           .input-group-append
             .input-group-text
               %i.fa.fa-area-chart
+
+      :css
+        #map { height: 400px; width: 100%; }
+      #map
+      :javascript
+        mapboxgl.accessToken = 'pk.eyJ1Ijoic29tMmgiLCJhIjoiY2s3d2FsejlpMDA3czNmcXJ3YzZrdG04aCJ9.BbPf2gG-DvC9ho8tH-X7bw';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [0, 0],
+            zoom: 2
+        });
+
+        var canvas = map.getCanvasContainer();
+
+        var geojson = {
+          'type': 'FeatureCollection',
+          'features': [{
+              'type': 'Feature',
+              'geometry': {
+                  'type': 'Point',
+                  'coordinates': [0, 0]
+              }
+          }]
+        };
+
+        function onMove(e) {
+          var coords = e.lngLat;
+          canvas.style.cursor = 'grabbing';
+          geojson.features[0].geometry.coordinates =  [coords.lng, coords.lat];
+          map.getSource('point').setData(geojson);
+        }
+
+        function onUp(e) {
+          var coords = e.lngLat;
+            document.getElementById('metafields_value').value =  [coords.lng, coords.lat].join();
+            canvas.style.cursor = '';
+            map.off('mousemove', onMove);
+            map.off('touchmove', onMove);
+        }
+
+        map.on('load', function() {
+            map.addSource('point', {
+                'type': 'geojson',
+                'data': geojson
+            });
+
+            map.addLayer({
+                'id': 'point',
+                'type': 'circle',
+                'source': 'point',
+                'paint': {
+                    'circle-radius': 10,
+                    'circle-color': '#3887be'
+                }
+            });
+
+            map.on('mouseenter', 'point', function() {
+                map.setPaintProperty('point', 'circle-color', '#3bb2d0');
+                canvas.style.cursor = 'move';
+            });
+
+            map.on('mouseleave', 'point', function() {
+                map.setPaintProperty('point', 'circle-color', '#3887be');
+                canvas.style.cursor = '';
+            });
+
+            map.on('mousedown', 'point', function(e) {
+                e.preventDefault();
+                canvas.style.cursor = 'grab';
+                map.on('mousemove', onMove);
+                map.once('mouseup', onUp);
+            });
+
+            map.on('touchstart', 'point', function(e) {
+                if (e.points.length !== 1) return;
+                e.preventDefault();
+                map.on('touchmove', onMove);
+                map.once('touchend', onUp);
+            });
+        });
 
   .form-group.row
     .offset-3.col-9
